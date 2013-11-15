@@ -1,7 +1,7 @@
 http test site code
 ===============
 
-http://secure-eyrie-6798.herokuapp.com/
+http://http-test-site.herokuapp.com/
 
 License
 ===============

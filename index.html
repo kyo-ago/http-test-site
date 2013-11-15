@@ -89,17 +89,30 @@ X-XSS-Protection: <select name="x-xss-protection">
 </p>
 
 <p>
-Other http headers<textarea id="other-http-header"></textarea>
+Other http headers<br>
+<textarea id="other-http-header">
+Access-Control-Allow-Origin: *
+</textarea>
 </p>
 
 <p>
-Content body<textarea name="body"></textarea>
+Content body<br>
+<textarea name="body">
+&lt;html&gt;
+&lt;head&gt;
+&lt;title&gt;&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+Hello world!
+&lt;/body&gt;
+&lt;/html&gt;
+</textarea>
 </p>
 
 <input type="submit">
 </form>
 
-<p>See sources: <a href="https://github.com/kyo-ago/http-header-test-site">https://github.com/kyo-ago/http-header-test-site</a></p>
+<p>See sources: <a href="https://github.com/kyo-ago/http-test-site">https://github.com/kyo-ago/http-test-site</a></p>
 
 <script>
 var form = document.querySelector('form');
@@ -111,7 +124,7 @@ form.addEventListener('submit', function () {
 		if (!head) {
 			return;
 		}
-		var headers = head.match(/(\w+):(.+)/);
+		var headers = head.match(/(.+?)\s*:\s*(.+)/);
 		if (!headers) {
 			return;
 		}
