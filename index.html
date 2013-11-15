@@ -128,9 +128,28 @@ form.addEventListener('submit', function () {
 		if (!headers) {
 			return;
 		}
+		headers.shift()
 		form.insertAdjacentHTML('AfterBegin', '<input type="hidden" name="'+headers.shift()+'" value="'+headers.join()+'">');
 	});
 });
+(function () {
+	var hash = location.hash.substr(1).split('&').reduce(function (base, obj) {
+		var pair = obj.split('=');
+		base[pair.shift()] = pair.join('=');
+		return base;
+	}, {});
+	var otherHeaders = [];
+	Object.keys(hash).forEach(function (key_) {
+		var key = decodeURIComponent(key_);
+		var val = decodeURIComponent(hash[key_]);
+		var elem = document.querySelector('[name="' + key.toLowerCase() + '"]');
+		if (!elem) {
+			return otherHeaders.push([key, val].join(': '));
+		}
+		elem.value = val;
+
+	});
+})()
 </script>
 
 </body>
