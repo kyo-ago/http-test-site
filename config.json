@@ -1,0 +1,7 @@
+{
+  "version": "v0.6.18",
+  "npm": true,
+  "main": "index.js",
+  "args": [],
+  "envs": {}
+}
